@@ -132,4 +132,7 @@ public class PlayerMovement : MonoBehaviour
             currentPlatform = null;
         }
     }
+    //hacer el de teletransportador en enter y exit con null y una variable de punto a y b 
+    //hacer la de la palnaca en enter y activar la animacion de movimiento 
+    // hacer un || con portal 
 }
