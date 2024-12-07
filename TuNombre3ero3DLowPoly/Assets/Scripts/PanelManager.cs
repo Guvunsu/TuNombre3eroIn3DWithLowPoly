@@ -40,7 +40,7 @@ public class PanelManager : MonoBehaviour {
     // agregar un tag al jugador en un gameobject vacio el trigger para la activacion del winCondition cuando el vato lo toque
 
 
-    private void OnTriggerEnter(Collider other) {
+    public void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player") || other.CompareTag("Win"))
             if (panelVictoria != null) {
 

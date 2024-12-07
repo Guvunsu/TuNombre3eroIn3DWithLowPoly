@@ -70,7 +70,7 @@ public class PlayerMovement : MonoBehaviour
         }
     }
     private void OnTriggerEnter(Collider other) {
-        if (other.CompareTag("Platform")) {
+        if (other.CompareTag("Plataform")) {
             currentPlatform = other.transform;
             lastPlatformPosition = currentPlatform.position;
         }
@@ -95,7 +95,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     private void OnTriggerExit(Collider other) {
-        if (other.CompareTag("Platform")) {
+        if (other.CompareTag("Plataform")) {
             currentPlatform = null;
         }
     }
