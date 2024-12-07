@@ -17,31 +17,7 @@ public class PlataformMovement : MonoBehaviour
         m_Objetivo = m_secondPosition.position;
     }
 
-    void Update() {
-
-        //m_time += 0.1f * Time.deltaTime;
-        //if (m_time > 1)
-        //{
-        //    m_time = 0;
-        //}
-
-        //transform.position = Vector3.Lerp(m_StartPos, m_Objetivo, m_time);
-
-        //if (Vector3.Distance(transform.position, m_Objetivo) > 0.9f)
-        //{
-        //    if (transform.position == m_firstPosition.position)
-        //    {
-        //        m_StartPos = m_secondPosition.position;
-        //        m_Objetivo = m_firstPosition.position;
-        //    }
-        //    else if (transform.position == m_secondPosition.position)
-        //    {
-        //        m_StartPos = m_firstPosition.position;
-        //        m_Objetivo = m_secondPosition.position;
-        //    }
-        //    //m_Objetivo = (m_Objetivo == m_firstPosition.position) ? m_secondPosition.position : m_firstPosition.position;
-        //}
-
+    void Update() { 
         // Mueve la plataforma hacia el destino
         transform.position = Vector3.MoveTowards(transform.position, m_Objetivo, m_time * Time.deltaTime);
 
