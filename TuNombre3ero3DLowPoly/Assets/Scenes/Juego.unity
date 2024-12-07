@@ -12979,9 +12979,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1151687779}
-  m_Layer: 0
+  m_Layer: 3
   m_Name: Checker
-  m_TagString: Untagged
+  m_TagString: groundCheck
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -12995,7 +12995,7 @@ Transform:
   m_GameObject: {fileID: 1151687778}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 6.45}
+  m_LocalPosition: {x: 0, y: -3, z: 6.45}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -14041,6 +14041,36 @@ MonoBehaviour:
   m_MinRegionArea: 2
   m_NavMeshData: {fileID: 23800000, guid: b0e0f2d8ae5ca7042b5d4086134520e1, type: 2}
   m_BuildHeightMesh: 0
+--- !u!64 &1224109054
+MeshCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224109050}
+  m_Material: {fileID: 0}
+  m_IncludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_ExcludeLayers:
+    serializedVersion: 2
+    m_Bits: 0
+  m_LayerOverridePriority: 0
+  m_IsTrigger: 0
+  m_ProvidesContacts: 0
+  m_Enabled: 1
+  serializedVersion: 5
+  m_Convex: 0
+  m_CookingOptions: 30
+  m_Mesh: {fileID: 0}
+--- !u!33 &1224109055
+MeshFilter:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1224109050}
+  m_Mesh: {fileID: 0}
 --- !u!1001 &1225985156
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -21166,6 +21196,10 @@ PrefabInstance:
       value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 4096050996438434630, guid: 036b18a680b04fc4dad37936fe0d20f4, type: 3}
+      propertyPath: m_TagString
+      value: groundCheck
+      objectReference: {fileID: 0}
+    - target: {fileID: 4096050996438434630, guid: 036b18a680b04fc4dad37936fe0d20f4, type: 3}
       propertyPath: m_StaticEditorFlags
       value: 2147483647
       objectReference: {fileID: 0}
@@ -23614,6 +23648,12 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 036b18a680b04fc4dad37936fe0d20f4, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1224109052}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 036b18a680b04fc4dad37936fe0d20f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1224109054}
+    - targetCorrespondingSourceObject: {fileID: 919132149155446097, guid: 036b18a680b04fc4dad37936fe0d20f4, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1224109055}
   m_SourcePrefab: {fileID: 100100000, guid: 036b18a680b04fc4dad37936fe0d20f4, type: 3}
 --- !u!4 &1225985157 stripped
 Transform:
@@ -28628,7 +28668,7 @@ Transform:
   m_GameObject: {fileID: 1769204356}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -11.98204, y: -31.2, z: 24.6}
+  m_LocalPosition: {x: 27.6, y: -31.2, z: 24.6}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -32437,7 +32477,7 @@ Transform:
   m_GameObject: {fileID: 919132148183088432}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 1, z: 0, w: 0}
-  m_LocalPosition: {x: 222.84204, y: -31.5, z: 383.1966}
+  m_LocalPosition: {x: 222.84204, y: -31.5, z: 176.7}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -34735,8 +34775,7 @@ Animator:
     animation clip 'Drunk Walk Backwards'\n\tFrom animation clip 'Walking'\n\tFrom
     animation clip 'Walking'\n\tFrom animation clip 'Jog Forward Diagonal'\n\tFrom
     animation clip 'Jog Backward Diagonal'\n\tFrom animation clip 'Jog Forward Diagonal'\n\tFrom
-    animation clip 'Jog Backward'\n\tFrom animation clip 'Jogging'\n\tFrom animation
-    clip 'Mma Kick'\n\tand more ..."
+    animation clip 'Jog Backward'\n\tFrom animation clip 'Jogging'"
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorStateOnDisable: 0
@@ -34761,7 +34800,7 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 3
   m_Size: {x: 5.265991, y: 5.9232864, z: 5.590393}
-  m_Center: {x: -0.051071167, y: 2.65, z: 0.71}
+  m_Center: {x: -0.051071167, y: 1.13, z: 0.71}
 --- !u!114 &5866666020736187890
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -34781,7 +34820,7 @@ MonoBehaviour:
   groundMask:
     serializedVersion: 2
     m_Bits: 8
-  rotationSpeed: 0
+  rotationSpeed: -0.09
   m_handTransform: {fileID: 2099387525}
 --- !u!143 &5866666020736187891
 CharacterController:
