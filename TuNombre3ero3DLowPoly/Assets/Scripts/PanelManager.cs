@@ -46,6 +46,7 @@ public class PanelManager : MonoBehaviour {
 
                 panelVictoria = null;
                 panelVictoria.SetActive(true);
+                Time.timeScale = 0f;
             }
 
     }
