@@ -89,11 +89,11 @@ InputManager:
     m_Name: Jump
     descriptiveName: 
     descriptiveNegativeName: 
-    negativeButton: 
+    negativeButton: space
     positiveButton: space
     altNegativeButton: 
     altPositiveButton: 
-    gravity: 1000
+    gravity: -9.81
     dead: 0.001
     sensitivity: 1000
     snap: 0

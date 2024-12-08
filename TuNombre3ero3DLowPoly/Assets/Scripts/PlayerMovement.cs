@@ -61,11 +61,50 @@ public class PlayerMovement : MonoBehaviour {
 
     #endregion UnityMethods
 
+    #region TriggersEnters Do Important Things
+
+    void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Plataform")) {
+            currentPlatform = other.transform;
+            lastPlatformPosition = currentPlatform.position;
+        }
+        if (other.CompareTag("Ungrabe") && Input.GetKeyDown(KeyCode.E)) {
+            other.transform.SetParent(transform, false);
+            other.transform.position = m_handTransform.position;
+        }
+    }
+    void OnTriggerStay(Collider other) {
+        if (!isGrabbing && other.CompareTag("Ungrabe") && Input.GetKeyDown(KeyCode.E)) {
+            other.transform.SetParent(m_handTransform, false);//para el padre es false y true para el objeto
+            other.transform.position = m_handTransform.position;
+            other.GetComponent<Rigidbody>().isKinematic = true;
+            isGrabbing = true;
+            StartCoroutine(timer());
+        }
+
+    }
+    IEnumerator timer() {
+        yield return new WaitForSeconds(0.3f);
+        isGrabbing = true;
+    }
+
+
+    void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Plataform")) {
+            currentPlatform = null;
+        }
+        if (other.CompareTag("Ungrabe")&& Input.GetKeyDown(KeyCode.E)) {
+            Debug.Log("Intento soltarlo pero no quiero :V");
+            isGrabbing = false;
+        }
+    }
+    #endregion TriggersEnters Do Important Things
+
     #region Moving Player & animator
 
     #region Animator
     void UpdateAnimator() {
-        // Parámetros de Blend Tree
+
         float Xaxis = Input.GetAxis("Horizontal");
         float Yaxis = Input.GetAxis("Vertical");
 
@@ -76,9 +115,7 @@ public class PlayerMovement : MonoBehaviour {
         animator.SetBool("IsJumping", currentState == PlayerState.JUMPING);
         animator.SetBool("IsGrounded", isGrounded);
 
-        // Transiciones adicionales
-        if (Input.GetKeyDown(KeyCode.H)) // Ejemplo para ataque
-        {
+        if (Input.GetKeyDown(KeyCode.H)) {
             animator.SetTrigger("Hit");
             currentState = PlayerState.HIT;
         }
@@ -89,18 +126,25 @@ public class PlayerMovement : MonoBehaviour {
         } else {
             animator.SetBool("Ungrabe", false);
         }
+
+
+
     }
     #endregion Animator
 
     void JumpingPlayer() {
-        if (Input.GetButtonDown("Jump") && isGrounded) {
-            velocity.y = Mathf.Sqrt(jumpHeight * -2f * gravity);
+        if (Input.GetKeyDown(KeyCode.Space) && isGrounded) {
             Debug.Log("Si Brinco pero no lo hago ");
+            velocity.y = Mathf.Sqrt(jumpHeight * -20f * gravity);
+            currentState = PlayerState.JUMPING;
             animator.SetTrigger("JumpStart");
-            currentState = PlayerState.JUMPING;
         } else if (!isGrounded) {
-            currentState = PlayerState.JUMPING;
+            currentState = PlayerState.GROUNDED;
         }
+        //chatgpt 
+        //actualiza la verticalidad del eje y por la gravedad 
+        velocity.y += gravity * Time.deltaTime;
+        controller.Move(velocity * Time.deltaTime);
     }
     void MovementPlayer() {
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
@@ -114,7 +158,8 @@ public class PlayerMovement : MonoBehaviour {
             Vector3 move = new Vector3(m_MoveX, m_MoveY);
 
             if (move.magnitude > 0.1f) {
-                float speed = Input.GetKey(KeyCode.LeftShift) ? jogSpeed : walkSpeed;
+                float speed = Input.GetKeyDown(KeyCode.LeftShift) ? jogSpeed : walkSpeed;
+                Debug.Log("Si troto pero no lo hago ");
                 controller.Move(move * speed * Time.deltaTime);
                 Quaternion m_targetRotation = Quaternion.LookRotation(move);
                 transform.rotation = Quaternion.Slerp(transform.rotation, m_targetRotation, Time.deltaTime * rotationSpeed);
@@ -135,6 +180,7 @@ public class PlayerMovement : MonoBehaviour {
                 lastPlatformPosition = currentPlatform.position;
             }
             if (isGrabbing && Input.GetKeyDown(KeyCode.E)) {
+                Debug.Log("Si tomo cosas pero no lo hago ");
                 GameObject temp_otherObj = m_handTransform.GetChild(0).gameObject;
                 temp_otherObj.transform.SetParent(null);
                 temp_otherObj.GetComponent<Rigidbody>().isKinematic = false;
@@ -144,43 +190,8 @@ public class PlayerMovement : MonoBehaviour {
 
         #endregion MovingPlayer & animator
 
-        #region TriggersEnters Do Important Things
 
-        void OnTriggerEnter(Collider other) {
-            if (other.CompareTag("Plataform")) {
-                currentPlatform = other.transform;
-                lastPlatformPosition = currentPlatform.position;
-            }
-            if (other.CompareTag("Ungrabe") && Input.GetKeyDown(KeyCode.E)) {
-                other.transform.SetParent(transform, false);
-                other.transform.position = m_handTransform.position;
-            }
-        }
-        void OnTriggerStay(Collider other) {
-            if (other.CompareTag("Ungrabe") && Input.GetKeyDown(KeyCode.E) && !isGrabbing) {
-                other.transform.SetParent(m_handTransform, false);//para el padre es false y true para el objeto
-                other.transform.position = m_handTransform.position;
-                other.GetComponent<Rigidbody>().isKinematic = true;
-                StartCoroutine(timer());
-            }
 
-        }
-
-        void OnTriggerExit(Collider other) {
-            if (other.CompareTag("Plataform")) {
-                currentPlatform = null;
-            }
-            if (other.CompareTag("Ungrabe")) {
-                isGrabbing = false;
-            }
-        }
-        #endregion TriggersEnters Do Important Things
-
-        IEnumerator timer() {
-            yield return new WaitForSeconds(0.3f);
-            isGrabbing = true;
-        }
     }
+
 }
-
-
