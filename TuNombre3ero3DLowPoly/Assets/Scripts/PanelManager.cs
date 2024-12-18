@@ -78,8 +78,8 @@ public class PanelManager : MonoBehaviour {
     }
     // Salir del juego
     public void GoToExit() {
-        // lo mismo pero para el editor, cuando estas en unity
-        UnityEditor.EditorApplication.isPlaying = false;
+        //// lo mismo pero para el editor, cuando estas en unity
+        //UnityEditor.EditorApplication.isPlaying = false;
         // para el jugador en in game
         Application.Quit();
     }

@@ -21,8 +21,8 @@ public class MenuManager : MonoBehaviour {
     }
     public void QuitGame() {
 
-        // Si estás en el editor de Unity, detiene el modo de juego
-        UnityEditor.EditorApplication.isPlaying = false;
+        //// Si estás en el editor de Unity, detiene el modo de juego
+        //UnityEditor.EditorApplication.isPlaying = false;
 
         Application.Quit();
     }
