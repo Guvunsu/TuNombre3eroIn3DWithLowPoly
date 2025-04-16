@@ -4465,7 +4465,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Damping: {x: 0, y: 3, z: 0}
-  ShoulderOffset: {x: -8.61, y: -1.6, z: -65.6}
+  ShoulderOffset: {x: -8.61, y: -2.53, z: -65.6}
   VerticalArmLength: 0.4
   CameraSide: 1
   CameraDistance: -13.67
@@ -10765,8 +10765,8 @@ MonoBehaviour:
   m_StreamingVersion: 20170927
   m_Priority: 10
   m_StandbyUpdate: 2
-  m_LookAt: {fileID: 0}
-  m_Follow: {fileID: 0}
+  m_LookAt: {fileID: 543450652389959562}
+  m_Follow: {fileID: 6906897853914087122}
   m_Lens:
     FieldOfView: 40
     OrthographicSize: 10
@@ -10806,8 +10806,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 855840935}
   serializedVersion: 2
-  m_LocalRotation: {x: -0, y: 0.13233174, z: -0, w: 0.9912055}
-  m_LocalPosition: {x: -21.93155, y: 15, z: -47.85254}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: -8.610041, y: 16.49002, z: -51.929882}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -13591,7 +13591,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -33806,7 +33806,7 @@ Transform:
   m_GameObject: {fileID: 919132148183088432}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: -0.031718157, z: -0, w: -0.9994969}
-  m_LocalPosition: {x: 173.5, y: -111.9, z: -388.7}
+  m_LocalPosition: {x: 184.5, y: -197.6, z: -782.8}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -33887,12 +33887,14 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 543450652389959562}
+  - component: {fileID: 5866666020736187895}
+  - component: {fileID: 5866666020736187897}
+  - component: {fileID: 5866666020736187894}
   - component: {fileID: 5866666020736187890}
   - component: {fileID: 5866666020736187888}
   - component: {fileID: 5866666020736187889}
   - component: {fileID: 5866666020736187892}
   - component: {fileID: 5866666020736187891}
-  - component: {fileID: 5866666020736187894}
   - component: {fileID: 5866666020736187893}
   m_Layer: 0
   m_Name: Caballero 1
@@ -34816,7 +34818,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -1.662681, y: -8.095215, z: -0.05800555}
+  m_ConnectedAnchor: {x: -1.6627319, y: -8.095229, z: -0.057907082}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -35867,7 +35869,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000010728836, y: 7.4312005, z: 0.0000101748155}
+  m_ConnectedAnchor: {x: 0.000029206276, y: 7.4311986, z: 0.00007467554}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -36117,7 +36119,7 @@ BoxCollider:
     serializedVersion: 2
     m_Bits: 0
   m_LayerOverridePriority: 0
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
@@ -36135,17 +36137,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bf233ed62efb2474ea4b0550f515217c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  walkSpeed: 30
-  jogSpeed: 60
-  jumpHeight: 10000000
-  speed: 50
-  rotationSpeed: 20
+  Player_FSM: 0
+  gameFSM: 0
+  rb: {fileID: 5866666020736187893}
+  controller: {fileID: 5866666020736187891}
+  animator: {fileID: 5866666020736187888}
   m_handTransform: {fileID: 2099387525}
-  groundDistance: 0.1
-  groundCheck: {fileID: 1151687779}
   groundMask:
     serializedVersion: 2
     m_Bits: 8
+  groundCheck: {fileID: 1151687779}
+  groundDistance: 0.1
+  lastPlatformPosition: {x: 0, y: 0, z: 0}
+  gravity: -362.3
+  jumpForce: 0.01
+  moveSpeed: 4
+  jogSpeed: 5
+  accelerationSpeed: 1
 --- !u!143 &5866666020736187891
 CharacterController:
   m_ObjectHideFlags: 0
@@ -36235,6 +36243,123 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_hipsRB: {fileID: 5866666020736187893}
+--- !u!114 &5866666020736187895
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148183088432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: 41070e2c9f908994ba06ef152f829b37, type: 3}
+  m_NotificationBehavior: 2
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents:
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5866666020736187890}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: MovePlayerDoll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: f1a0be8d-886f-4f63-9d53-4ec3c87dd090
+    m_ActionName: ControllerMaster/Move[/Keyboard/w,/Keyboard/s,/Keyboard/a,/Keyboard/d]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5866666020736187890}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: HitPlayerDoll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 9ca0468c-0702-41e8-9a00-b790d1b60541
+    m_ActionName: ControllerMaster/Hit[/Keyboard/r]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5866666020736187890}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: InteractionPlayerDoll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 6ff7994d-3321-42ac-93c3-da6e9802b0b7
+    m_ActionName: ControllerMaster/PickUp[/Keyboard/e]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5866666020736187890}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: JumpPlayerDoll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 65380d8b-e3ea-4814-8cf8-0a47f73cc847
+    m_ActionName: ControllerMaster/jump[/Keyboard/space]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: e9d9645e-2f44-4bae-9227-d58693a3c0fa
+    m_ActionName: ControllerMaster/RagDoll[/Keyboard/q]
+  - m_PersistentCalls:
+      m_Calls: []
+    m_ActionId: 5c218ffc-69a8-486c-af0d-21d17e6888b7
+    m_ActionName: ControllerMaster/Pause[/Keyboard/escape]
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: ControllerMaster
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 963194227}
+--- !u!114 &5866666020736187897
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148183088432}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 57f9834096aff3b4ab77fadb6cf72091, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  move: {x: 1, y: 1}
+  look: {x: 1.5, y: 1.5}
+  pickedUp: 0
 --- !u!4 &5901452234019665161
 Transform:
   m_ObjectHideFlags: 0
@@ -36322,7 +36447,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 3.7919695, y: 3.8972807, z: -0.07632791}
+  m_ConnectedAnchor: {x: 3.7919157, y: 3.8972654, z: -0.07621717}
   serializedVersion: 2
   m_SwingAxis: {x: -1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -36926,7 +37051,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000019729137, y: 6.803885, z: 0.0000033080578}
+  m_ConnectedAnchor: {x: 0.00005888939, y: 6.803877, z: 0.000060230494}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -37036,7 +37161,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000017642975, y: 7.427901, z: -0.000009834766}
+  m_ConnectedAnchor: {x: 0.000029146671, y: 7.427903, z: 0.0000414066}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -37229,7 +37354,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 0.0000070631504, y: 3.652204, z: 0.0000019073486}
+  m_ConnectedAnchor: {x: 0.000056415796, y: 3.652247, z: 0.000009417534}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -37344,7 +37469,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.000007137646, y: 7.3041945, z: 0.5772884}
+  m_ConnectedAnchor: {x: -0.000045895566, y: 7.304188, z: 0.5773647}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -37685,7 +37810,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: 1.6566852, y: -8.104995, z: 0.006245905}
+  m_ConnectedAnchor: {x: 1.6566669, y: -8.104997, z: 0.0063081025}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
@@ -38265,7 +38390,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 0, y: 0, z: -1}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -3.7914498, y: 3.9168963, z: -0.2801928}
+  m_ConnectedAnchor: {x: -3.791516, y: 3.916892, z: -0.28011507}
   serializedVersion: 2
   m_SwingAxis: {x: 1, y: 0, z: 0}
   m_TwistLimitSpring:
@@ -38442,7 +38567,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: -1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.00000029057264, y: 3.6784475, z: -0.0000021457672}
+  m_ConnectedAnchor: {x: -0.000058285892, y: 3.6784122, z: 0.00003015995}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: -1}
   m_TwistLimitSpring:
@@ -38659,7 +38784,7 @@ CharacterJoint:
   m_Anchor: {x: 0, y: 0, z: 0}
   m_Axis: {x: 1, y: 0, z: 0}
   m_AutoConfigureConnectedAnchor: 1
-  m_ConnectedAnchor: {x: -0.0000071383547, y: -2.6643424, z: -0.00001374449}
+  m_ConnectedAnchor: {x: -0.000018375693, y: -2.664346, z: 0.00005886887}
   serializedVersion: 2
   m_SwingAxis: {x: 0, y: 0, z: 1}
   m_TwistLimitSpring:
