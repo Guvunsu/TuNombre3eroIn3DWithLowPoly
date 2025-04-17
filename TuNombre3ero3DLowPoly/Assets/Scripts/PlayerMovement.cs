@@ -45,9 +45,9 @@ public class PlayerMovement : MonoBehaviour {
 
     [SerializeField] float gravity = -9.81f;
 
-    [SerializeField] float jumpForce = 5f;
-    [SerializeField] float moveSpeed = 2f;
-    [SerializeField] float jogSpeed = 5f;
+    [SerializeField] float jumpForce = 21f;
+    [SerializeField] float moveSpeed = 20f;
+    [SerializeField] float jogSpeed = 25f;
     [SerializeField] float accelerationSpeed = 1.1f;
 
     bool isGrounded;
@@ -57,11 +57,6 @@ public class PlayerMovement : MonoBehaviour {
 
     #region PublicUnityMethods
 
-    //void Awake() {
-    //    //rb = GetComponent<Rigidbody>();
-    //    //controller = GetComponent<CharacterController>();
-    //    //animator = GetComponent<Animator>();
-    //}
     void Start() {
         Player_FSM = playerFSM.IDLE;
         gameFSM = GameState.PLAYING;
@@ -76,8 +71,8 @@ public class PlayerMovement : MonoBehaviour {
             velocity.y = -2f;
         }
 
-        Vector3 move = new Vector3(direction.x, 0f, direction.z);
-        controller.Move(move * Time.fixedDeltaTime);
+        Vector3 move = new Vector3(direction.x, 0f, direction.z).normalized;
+        controller.Move(move * moveSpeed * Time.fixedDeltaTime);
 
         controller.Move(velocity * Time.fixedDeltaTime);
 
@@ -87,16 +82,15 @@ public class PlayerMovement : MonoBehaviour {
                 break;
 
             case playerFSM.JOGGING:
-                Move(jogSpeed * accelerationSpeed);
+                Move(jogSpeed);
                 break;
 
             case playerFSM.JUMPING:// creoq ue esto deberiua estar ebn negativo
-                if (isGrounded) {
-                    Player_FSM = playerFSM.ISGROUNDED;
-                    animator.SetBool("IsJumping", false);
-                }
+                CheckGround();//checa y verifica matematicamente si esta en el suelo e ISGROUNDED en el FSM
+                animator.SetBool("IsJumping", false);
                 break;
-
+            case playerFSM.HIT:
+                break;
             case playerFSM.IDLE:
                 animator.SetFloat("Speed", 0f);
                 break;
@@ -109,14 +103,18 @@ public class PlayerMovement : MonoBehaviour {
     void Move(float speed) {
         Vector3 move = new Vector3(direction.x, 0, direction.z).normalized;
         if (move.magnitude >= 0.1f) {
-            transform.Translate(move * speed * Time.fixedDeltaTime, Space.World);
+            // transform.Translate(move * speed * Time.fixedDeltaTime, Space.World);
             animator.SetFloat("Speed", speed);
         }
     }
 
     void CheckGround() {
-        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-        animator.SetBool("IsGrounded", isGrounded);
+        if (Player_FSM == playerFSM.ISGROUNDED) {
+            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+            animator.SetBool("IsGrounded", isGrounded);
+        } else {
+            Player_FSM = playerFSM.NOT_GROUNDED;
+        }
     }
 
     #endregion PrivateMethods
@@ -129,19 +127,22 @@ public class PlayerMovement : MonoBehaviour {
             Player_FSM = playerFSM.WALKING;
         } else if (value.canceled && gameFSM == GameState.PLAYING) {
             Player_FSM = playerFSM.IDLE;
+            direction = Vector3.zero;
         }
     }
     public void JoggingPLayerDoll(InputAction.CallbackContext value) {
         if (value.performed && gameFSM == GameState.PLAYING) {
             Player_FSM = playerFSM.JOGGING;
+            direction = new Vector3(jogSpeed * moveSpeed * accelerationSpeed, jogSpeed, jogSpeed);
         } else if (value.canceled) {
+            direction = Vector3.zero;
             Player_FSM = playerFSM.IDLE;
         }
     }
     public void JumpPlayerDoll(InputAction.CallbackContext value) {
-        if (value.performed && isGrounded && Player_FSM != playerFSM.JUMPING) {
+        if (Input.GetKeyDown(KeyCode.Space) || value.performed && isGrounded && Player_FSM != playerFSM.JUMPING) {
             Player_FSM = playerFSM.JUMPING;
-            velocity.y = Mathf.Sqrt(jumpForce * -200f * gravity);
+            velocity.y = Mathf.Sqrt(jumpForce * accelerationSpeed * gravity);
             animator.SetBool("IsJumping", true);
             animator.SetTrigger("IsGrounded");
         }
@@ -155,7 +156,7 @@ public class PlayerMovement : MonoBehaviour {
         }
     }
     public void HitPlayerDoll(InputAction.CallbackContext value) {
-        if (value.performed) {
+        if (Input.GetKeyDown(KeyCode.F) || value.performed) {
             animator.SetTrigger("Hit");
             Player_FSM = playerFSM.HIT;
         }

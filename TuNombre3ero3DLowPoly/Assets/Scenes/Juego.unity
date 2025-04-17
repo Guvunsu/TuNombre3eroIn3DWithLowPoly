@@ -33888,6 +33888,7 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652389959562}
   - component: {fileID: 5866666020736187895}
+  - component: {fileID: 5866666020736187898}
   - component: {fileID: 5866666020736187897}
   - component: {fileID: 5866666020736187894}
   - component: {fileID: 5866666020736187890}
@@ -36151,9 +36152,9 @@ MonoBehaviour:
   lastPlatformPosition: {x: 0, y: 0, z: 0}
   gravity: -362.3
   jumpForce: 0.01
-  moveSpeed: 4
-  jogSpeed: 5
-  accelerationSpeed: 1
+  moveSpeed: 10
+  jogSpeed: 15
+  accelerationSpeed: 1.1
 --- !u!143 &5866666020736187891
 CharacterController:
   m_ObjectHideFlags: 0
@@ -36360,6 +36361,26 @@ MonoBehaviour:
   move: {x: 1, y: 1}
   look: {x: 1.5, y: 1.5}
   pickedUp: 0
+--- !u!114 &5866666020736187898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 919132148183088432}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf4c0687c587dea4f8b7c5a6f6f2a0d2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  itemtRB: {fileID: 0}
+  itemCollider: {fileID: 0}
+  playerTransform: {fileID: 0}
+  container: {fileID: 0}
+  pickUpRange: 0
+  dropForwardForce: 0
+  dropUpwardForce: 0
+  equipaded: 0
 --- !u!4 &5901452234019665161
 Transform:
   m_ObjectHideFlags: 0
