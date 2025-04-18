@@ -33888,8 +33888,6 @@ GameObject:
   m_Component:
   - component: {fileID: 543450652389959562}
   - component: {fileID: 5866666020736187895}
-  - component: {fileID: 5866666020736187898}
-  - component: {fileID: 5866666020736187897}
   - component: {fileID: 5866666020736187894}
   - component: {fileID: 5866666020736187890}
   - component: {fileID: 5866666020736187888}
@@ -36150,11 +36148,11 @@ MonoBehaviour:
   groundCheck: {fileID: 1151687779}
   groundDistance: 0.1
   lastPlatformPosition: {x: 0, y: 0, z: 0}
-  gravity: -362.3
-  jumpForce: 0.01
-  moveSpeed: 10
-  jogSpeed: 15
-  accelerationSpeed: 1.1
+  gravity: -9.81
+  jumpForce: 10
+  moveSpeed: 100
+  jogSpeed: 150
+  accelerationSpeed: 10.1
 --- !u!143 &5866666020736187891
 CharacterController:
   m_ObjectHideFlags: 0
@@ -36334,53 +36332,58 @@ MonoBehaviour:
     m_ActionId: 65380d8b-e3ea-4814-8cf8-0a47f73cc847
     m_ActionName: ControllerMaster/jump[/Keyboard/space]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 5866666020736187894}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: e9d9645e-2f44-4bae-9227-d58693a3c0fa
     m_ActionName: ControllerMaster/RagDoll[/Keyboard/q]
   - m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 11500000, guid: 070baf5e157762f49b23086f88644e3a, type: 3}
+        m_TargetAssemblyTypeName: 
+        m_MethodName: 
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: 
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_ActionId: 5c218ffc-69a8-486c-af0d-21d17e6888b7
     m_ActionName: ControllerMaster/Pause[/Keyboard/escape]
+  - m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 5866666020736187890}
+        m_TargetAssemblyTypeName: PlayerMovement, Assembly-CSharp
+        m_MethodName: JoggingPLayerDoll
+        m_Mode: 0
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+    m_ActionId: 50d0b565-4636-4038-a0f1-994ea26d84b7
+    m_ActionName: ControllerMaster/Jooging[/Keyboard/shift]
   m_NeverAutoSwitchControlSchemes: 0
   m_DefaultControlScheme: 
   m_DefaultActionMap: ControllerMaster
   m_SplitScreenIndex: -1
   m_Camera: {fileID: 963194227}
---- !u!114 &5866666020736187897
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148183088432}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 57f9834096aff3b4ab77fadb6cf72091, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  move: {x: 1, y: 1}
-  look: {x: 1.5, y: 1.5}
-  pickedUp: 0
---- !u!114 &5866666020736187898
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 919132148183088432}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bf4c0687c587dea4f8b7c5a6f6f2a0d2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  itemtRB: {fileID: 0}
-  itemCollider: {fileID: 0}
-  playerTransform: {fileID: 0}
-  container: {fileID: 0}
-  pickUpRange: 0
-  dropForwardForce: 0
-  dropUpwardForce: 0
-  equipaded: 0
 --- !u!4 &5901452234019665161
 Transform:
   m_ObjectHideFlags: 0

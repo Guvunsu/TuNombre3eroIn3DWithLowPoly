@@ -103,18 +103,15 @@ public class PlayerMovement : MonoBehaviour {
     void Move(float speed) {
         Vector3 move = new Vector3(direction.x, 0, direction.z).normalized;
         if (move.magnitude >= 0.1f) {
-            // transform.Translate(move * speed * Time.fixedDeltaTime, Space.World);
+            transform.Translate(move * speed * Time.fixedDeltaTime, Space.World);
             animator.SetFloat("Speed", speed);
         }
     }
 
     void CheckGround() {
-        if (Player_FSM == playerFSM.ISGROUNDED) {
-            isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
-            animator.SetBool("IsGrounded", isGrounded);
-        } else {
-            Player_FSM = playerFSM.NOT_GROUNDED;
-        }
+        isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+        animator.SetBool("IsGrounded", isGrounded);
+        //Player_FSM = isGrounded ? playerFSM.ISGROUNDED : playerFSM.NOT_GROUNDED;
     }
 
     #endregion PrivateMethods
@@ -122,9 +119,9 @@ public class PlayerMovement : MonoBehaviour {
     #region PublicMethods
     public void MovePlayerDoll(InputAction.CallbackContext value) {
         if (value.performed && gameFSM == GameState.PLAYING) {
+            Player_FSM = playerFSM.WALKING;
             Vector2 input = value.ReadValue<Vector2>();
             direction = new Vector3(input.x, 0f, input.y);
-            Player_FSM = playerFSM.WALKING;
         } else if (value.canceled && gameFSM == GameState.PLAYING) {
             Player_FSM = playerFSM.IDLE;
             direction = Vector3.zero;
@@ -135,30 +132,30 @@ public class PlayerMovement : MonoBehaviour {
             Player_FSM = playerFSM.JOGGING;
             direction = new Vector3(jogSpeed * moveSpeed * accelerationSpeed, jogSpeed, jogSpeed);
         } else if (value.canceled) {
-            direction = Vector3.zero;
             Player_FSM = playerFSM.IDLE;
+            direction = Vector3.zero;
         }
     }
     public void JumpPlayerDoll(InputAction.CallbackContext value) {
-        if (Input.GetKeyDown(KeyCode.Space) || value.performed && isGrounded && Player_FSM != playerFSM.JUMPING) {
+        if (value.performed && isGrounded && Player_FSM != playerFSM.JUMPING) {
             Player_FSM = playerFSM.JUMPING;
-            velocity.y = Mathf.Sqrt(jumpForce * accelerationSpeed * gravity);
+            velocity.y = Mathf.Sqrt(jumpForce * -10 * gravity);
             animator.SetBool("IsJumping", true);
             animator.SetTrigger("IsGrounded");
         }
     }
     public void InteractionPlayerDoll(InputAction.CallbackContext value) {
         if (value.performed && isGrabbing) {
-            animator.SetBool("Ungrabe", true);
             Player_FSM = playerFSM.TAKE_IT;
+            animator.SetBool("Ungrabe", true);
         } else {
             animator.SetBool("Ungrabe", false);
         }
     }
     public void HitPlayerDoll(InputAction.CallbackContext value) {
-        if (Input.GetKeyDown(KeyCode.F) || value.performed) {
-            animator.SetTrigger("Hit");
+        if (value.performed) {
             Player_FSM = playerFSM.HIT;
+            animator.SetTrigger("Hit");
         }
     }
 
