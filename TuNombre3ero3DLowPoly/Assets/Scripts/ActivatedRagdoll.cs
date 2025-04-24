@@ -1,9 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 
-public class ActivatedRagdoll : MonoBehaviour
-{
+public class ActivatedRagdoll : MonoBehaviour {
     [SerializeField] Rigidbody m_hipsRB;
     Animator m_animator;
     bool m_flag;
@@ -16,7 +16,8 @@ public class ActivatedRagdoll : MonoBehaviour
             m_hipsRB.isKinematic = m_flag;
 
             m_flag = !m_flag;
-        }
 
+
+        }
     }
 }

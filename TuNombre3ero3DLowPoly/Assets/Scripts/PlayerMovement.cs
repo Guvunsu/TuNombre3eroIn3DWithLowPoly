@@ -161,6 +161,42 @@ public class PlayerMovement : MonoBehaviour {
 
     #endregion PublicMethods
 
+    #region TriggersEnters Do Important Things
+    void OnTriggerEnter(Collider other) {
+        if (other.CompareTag("Plataform")) {
+            currentPlatform = other.transform;
+            lastPlatformPosition = currentPlatform.position;
+        }
+        if (other.CompareTag("Ungrabe") && Input.GetKeyDown(KeyCode.E)) {
+            other.transform.SetParent(transform, false);
+            other.transform.position = m_handTransform.position;
+        }
+    }
+    void OnTriggerStay(Collider other) {
+        if (!isGrabbing && other.CompareTag("Ungrabe") && Input.GetKeyDown(KeyCode.E)) {
+            other.transform.SetParent(m_handTransform, false);//para el padre es false y true para el objeto
+            other.transform.position = m_handTransform.position;
+            other.GetComponent<Rigidbody>().isKinematic = true;
+            isGrabbing = true;
+            StartCoroutine(timer());
+        }
+
+    }
+    void OnTriggerExit(Collider other) {
+        if (other.CompareTag("Plataform")) {
+            currentPlatform = null;
+        }
+        if (other.CompareTag("Ungrabe") && Input.GetKeyDown(KeyCode.E)) {
+            Debug.Log("Intento soltarlo pero no quiero :V");
+            isGrabbing = false;
+        }
+    }
+    IEnumerator timer() {
+        yield return new WaitForSeconds(0.3f);
+        isGrabbing = true;
+    }
+
+    #endregion TriggersEnters Do Important Things
 
 
 
