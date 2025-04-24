@@ -5,7 +5,7 @@ ModelImporter:
   internalIDToNameTable: []
   externalObjects: {}
   materials:
-    materialImportMode: 2
+    materialImportMode: 1
     materialName: 0
     materialSearch: 1
     materialLocation: 1
@@ -24,7 +24,7 @@ ModelImporter:
     animationDoRetargetingWarnings: 0
     importAnimatedCustomProperties: 0
     importConstraints: 0
-    animationCompression: 1
+    animationCompression: 3
     animationRotationError: 0.5
     animationPositionError: 0.5
     animationScaleError: 0.5
@@ -57,7 +57,7 @@ ModelImporter:
     skinWeightsMode: 0
     maxBonesPerVertex: 4
     minBoneWeight: 0.001
-    optimizeBones: 1
+    optimizeBones: 0
     meshOptimizationFlags: -1
     indexFormat: 0
     secondaryUVAngleDistortion: 8
@@ -78,11 +78,151 @@ ModelImporter:
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
   referencedClips: []
-  importAnimation: 1
+  importAnimation: 0
   humanDescription:
     serializedVersion: 3
     human: []
-    skeleton: []
+    skeleton:
+    - name: TheDead(Clone)
+      parentName: 
+      position: {x: 0.17397784, y: 0.008519615, z: 0.000006788254}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 0.01, y: 0.01, z: 0.01}
+    - name: adorno4
+      parentName: TheDead(Clone)
+      position: {x: -10.794947, y: -0.5993558, z: -0.009599084}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: adorno3
+      parentName: TheDead(Clone)
+      position: {x: 12.481226, y: -0.32556012, z: -0.009599084}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: adorno2
+      parentName: TheDead(Clone)
+      position: {x: 4.8817973, y: -1.1305681, z: -0.050543446}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: adorno
+      parentName: TheDead(Clone)
+      position: {x: -5.1850085, y: -1.1305679, z: -0.038541153}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ManoDer
+      parentName: TheDead(Clone)
+      position: {x: -16.807798, y: 5.210592, z: 0.77685624}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PalmaMano
+      parentName: ManoDer
+      position: {x: 1.0109484, y: -0.6067904, z: 0.00000008695232}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Dedo
+      parentName: ManoDer
+      position: {x: -1.3720297, y: -1.6326894, z: 0.119087614}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Dedo1
+      parentName: ManoDer
+      position: {x: -1.3720297, y: -0.9301023, z: 0.119087614}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Dedo2
+      parentName: ManoDer
+      position: {x: -1.3720297, y: -0.25396833, z: 0.119087614}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Dedo3
+      parentName: ManoDer
+      position: {x: -1.3720297, y: 0.3893678, z: 0.119087614}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pulgar
+      parentName: ManoDer
+      position: {x: -0.060506698, y: 1.1162736, z: 0.119087614}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: ManoIzq
+      parentName: TheDead(Clone)
+      position: {x: 16.807796, y: 5.2105913, z: 0.7768563}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: PalmaMano
+      parentName: ManoIzq
+      position: {x: -1.0109485, y: -0.6067905, z: -0.00000058729705}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Dedo
+      parentName: ManoIzq
+      position: {x: 1.3720297, y: -1.6326895, z: -0.11908811}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Dedo1
+      parentName: ManoIzq
+      position: {x: 1.3720297, y: -0.93010235, z: -0.11908811}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Dedo2
+      parentName: ManoIzq
+      position: {x: 1.3720297, y: -0.25396836, z: -0.11908811}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Dedo3
+      parentName: ManoIzq
+      position: {x: 1.3720297, y: 0.38936773, z: -0.11908811}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: pulgar
+      parentName: ManoIzq
+      position: {x: 0.060506623, y: 1.1162736, z: -0.11908811}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: BrazoDer
+      parentName: TheDead(Clone)
+      position: {x: -8.99694, y: 2.3286, z: -0.009598241}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: BrazoIzq
+      parentName: TheDead(Clone)
+      position: {x: 8.923144, y: 2.3176277, z: -0.00959959}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Tunica
+      parentName: TheDead(Clone)
+      position: {x: -0.13107358, y: -3.034252, z: 0.00000003576279}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: Capucha
+      parentName: TheDead(Clone)
+      position: {x: -0.1310734, y: 8.249927, z: -0.18298669}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: oJO
+      parentName: TheDead(Clone)
+      position: {x: -0.13107358, y: 8.72087, z: 2.3198164}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: dIENTE2
+      parentName: TheDead(Clone)
+      position: {x: -0.1310734, y: 6.987848, z: 2.3279252}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: dIENTE1
+      parentName: TheDead(Clone)
+      position: {x: -0.13107324, y: 7.0012755, z: 2.082511}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: mNADIBULA
+      parentName: TheDead(Clone)
+      position: {x: -0.13107358, y: 5.9294257, z: -0.010193603}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
+    - name: cRANEO
+      parentName: TheDead(Clone)
+      position: {x: -0.13107358, y: 9.176725, z: -0.009598999}
+      rotation: {x: 0, y: -0, z: -0, w: 1}
+      scale: {x: 1, y: 1, z: 1}
     armTwist: 0.5
     foreArmTwist: 0.5
     upperLegTwist: 0.5
@@ -97,9 +237,9 @@ ModelImporter:
     skeletonHasParents: 1
   lastHumanDescriptionAvatarSource: {instanceID: 0}
   autoGenerateAvatarMappingIfUnspecified: 1
-  animationType: 2
+  animationType: 3
   humanoidOversampling: 1
-  avatarSetup: 0
+  avatarSetup: 1
   addHumanoidExtraRootOnlyWhenUsingAvatar: 1
   importBlendShapeDeformPercent: 0
   remapMaterialsIfMaterialImportModeIsNone: 0
