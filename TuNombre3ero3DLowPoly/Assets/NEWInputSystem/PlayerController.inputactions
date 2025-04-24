@@ -52,12 +52,12 @@
                 },
                 {
                     "name": "Pause",
-                    "type": "Button",
+                    "type": "Value",
                     "id": "5c218ffc-69a8-486c-af0d-21d17e6888b7",
                     "expectedControlType": "Button",
                     "processors": "",
                     "interactions": "",
-                    "initialStateCheck": false
+                    "initialStateCheck": true
                 },
                 {
                     "name": "Jooging",
@@ -150,7 +150,7 @@
                 {
                     "name": "",
                     "id": "0e47ba93-4523-4671-98f2-f1f75f301478",
-                    "path": "<Keyboard>/escape",
+                    "path": "<Keyboard>/p",
                     "interactions": "Press",
                     "processors": "",
                     "groups": "",

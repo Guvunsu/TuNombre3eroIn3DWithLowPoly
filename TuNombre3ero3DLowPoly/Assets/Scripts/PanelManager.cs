@@ -18,7 +18,7 @@ public class PanelManager : MonoBehaviour {
         pausePanel.SetActive(false);
     }
     void Update() {
-        if (Input.GetKeyDown(KeyCode.Escape)) {
+        if (Input.GetKeyDown(KeyCode.P)) {
             if (paused) {
                 ResumeGame();
             }

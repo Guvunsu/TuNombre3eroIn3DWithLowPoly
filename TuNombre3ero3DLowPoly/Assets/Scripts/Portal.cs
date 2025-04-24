@@ -4,9 +4,7 @@ using UnityEngine;
 
 public class Portal : MonoBehaviour {
     #region Variables 
-
     [SerializeField] Transform m_target;
-
 
     #endregion Variables
     private void OnTriggerEnter(Collider other) {
