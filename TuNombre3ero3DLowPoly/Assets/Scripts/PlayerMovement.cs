@@ -35,6 +35,10 @@ public class PlayerMovement : MonoBehaviour {
     [SerializeField] Transform m_handTransform;
     private Transform currentPlatform;
 
+    public Transform holdParent;
+    [SerializeField] GameObject heldObject;
+    [SerializeField] float pickupRange = 5f;
+
     [SerializeField] LayerMask groundMask;
     [SerializeField] Transform groundCheck;
     [SerializeField] float groundDistance = 0.4f;
@@ -170,6 +174,21 @@ public class PlayerMovement : MonoBehaviour {
         if (other.CompareTag("Ungrabe") && Input.GetKeyDown(KeyCode.E)) {
             other.transform.SetParent(transform, false);
             other.transform.position = m_handTransform.position;
+            if (heldObject == null) {
+                Ray ray = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
+                if (Physics.Raycast(ray, out RaycastHit hit, pickupRange)) {
+                    if (hit.collider.CompareTag("Caja")) {
+                        heldObject = hit.collider.gameObject;
+                        heldObject.GetComponent<Rigidbody>().isKinematic = true;
+                        heldObject.transform.position = holdParent.position;
+                        heldObject.transform.SetParent(holdParent);
+                    }
+                }
+            } else {
+                heldObject.GetComponent<Rigidbody>().isKinematic = false;
+                heldObject.transform.SetParent(null);
+                heldObject = null;
+            }
         }
     }
     void OnTriggerStay(Collider other) {
