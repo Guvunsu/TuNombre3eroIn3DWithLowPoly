@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -69,10 +70,14 @@ public class PlayerMovement : MonoBehaviour {
     void FixedUpdate() {
         CheckGround();
 
-        if (!isGrounded && velocity.y > -20f) {
+        if (!isGrounded) {
             velocity.y += gravity * Time.fixedDeltaTime;
         } else if (isGrounded && velocity.y < 0) {
             velocity.y = -2f;
+            if (Player_FSM == playerFSM.JUMPING) {
+                Player_FSM = playerFSM.IDLE;
+                animator.SetBool("IsJumping", false);
+            }
         }
 
         Vector3 move = new Vector3(direction.x, 0f, direction.z).normalized;
@@ -142,10 +147,9 @@ public class PlayerMovement : MonoBehaviour {
     }
     public void JumpPlayerDoll(InputAction.CallbackContext value) {
         if (value.performed && isGrounded && Player_FSM != playerFSM.JUMPING) {
+            velocity.y = Mathf.Sqrt(jumpForce * -2f * gravity);
             Player_FSM = playerFSM.JUMPING;
-            velocity.y = Mathf.Sqrt(jumpForce * -10 * gravity);
             animator.SetBool("IsJumping", true);
-            animator.SetTrigger("IsGrounded");
         }
     }
     public void InteractionPlayerDoll(InputAction.CallbackContext value) {

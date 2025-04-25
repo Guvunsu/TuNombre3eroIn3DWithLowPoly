@@ -8,7 +8,10 @@ public class PanelManager : MonoBehaviour {
     #region Variables
     private bool paused = false;
     public string menuSceneName = "Menu"; //Menu escena del Menu ;P
+
     public GameObject pausePanel, panelVictoria;
+    public GameObject panelUI;
+
 
     #endregion Variables
 
@@ -37,6 +40,15 @@ public class PanelManager : MonoBehaviour {
         }
     }
     #endregion Funciones para Panel Victoria
+
+    #region Ui Mensaje
+    public void CerrarMensaje() {
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            panelUI.SetActive(false);
+        }
+    }
+
+    #endregion Ui Mensaje
 
     #region Funciones para el panel de pausa
     //public void ActivationPanel(InputAction.CallbackContext value) {

@@ -10,7 +10,7 @@ public class Portal : MonoBehaviour {
     private void OnTriggerEnter(Collider other) {
         if (other.CompareTag("Player")) {
             other.transform.position = m_target.position;
-            other.transform.rotation = Quaternion.Euler(m_target.position);
+            other.transform.rotation = Quaternion.Euler(-60 * -m_target.position);
         }
     }
 }

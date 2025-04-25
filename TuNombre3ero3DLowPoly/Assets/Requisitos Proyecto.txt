@@ -1,0 +1,33 @@
+Configuración del proyecto:
+Crear un nuevo proyecto de Unity en 3D que cuente con los siguientes paquetes:
+1) URP. <5%>
+
+Menú:
+1) El menú debe contar con un título original. <5%>
+2) Con un fondo acorde al estilo visual del juego. <5%>
+3) Botón funcional: Para Iniciar partida. <10%>
+4) Botón funcional: Para Salir del juego. <10%>
+
+Game:
+1) Crea un jugador el cual debe poder moverse, saltar, agarrar objetos y que incluya un ragdoll. <30%>
+2) El jugador debe contar con las siguientes animaciones: Idle, caminar, trotar, correr y cargar un objeto. <25%>
+2.1) Las animaciones de caminar, trotar y correr se deben manejar con un “blend tree”. <20%>
+3) Debe de haber mínimo 2 tipos de enemigos:
+a) Un Enemigo genérico que te siga en cuanto estés dentro de su rango de visión. <20%>
+b) Un monstruo que te siga infinitamente, el cual debe moverse más lento que el jugador y debe activarse al completar el segundo objetivo (Ver punto 6). <35%>
+4) Una vez que el enemigo B alcance al jugador, debe golpearlo y activar su ragdoll, y pasados 1.5 segundos el jugador debe poder levantarse y continuar. En caso de ser alcanzado y golpeado por el enemigo A, no se activará el ragdoll. <45%>
+5) Debe haber 3 cajas de colores que se puedan cargar y que estén repartidas por el escenario. Cada caja debe llevarse a una zona específica y, al llegar a la zona, la caja se debe poder soltar (con el mismo botón con el cual se agarro) destruirse y avisar al jugador mediante el UI. Una vez destruidas las 3 cajas, se deberá abrir la puerta principal. <40%>
+6) Crea un UI funcional que muestre el objetivo del juego (activar las cajas) y que vaya acorde a la estética del juego. <20%>
+7) Debe haber al menos 2 plataformas móviles en las cuales te puedas subir, y te lleven sin la necesidad de moverte. <30%>
+8) Debe de haber al menos 4 portales que funcionen correctamente, esto quiere decir que cada portal deberá mostrar a donde llegará el jugador. <30%>
+
+Configuración del juego:
+1) Crear un escenario simple con mínimo 3 zonas diferentes. <30%>
+2) Cada zona debera tener su "Global Volume" unico, en mode: local, y al entrar en cada zona deberá cambiar el filtro.<30%>
+2) Cada puerta debe abrirse cuando un jugador Triggeré con su collider y debe cerrarse cuando el jugador se aleje. Por lo tanto, la puerta debe contar con dos animaciones (para abrirse y para cerrarse). <25%>
+
+IMPORTANTE:
+1) Todas las texturas tienen que estar arregladas, esto quiere decir que no debe de existir ninguna textura de color rosa (error). <10%>
+2) El arte, menús, y todo el apartado visual debe tener coherencia. <35%>
+3) Deberás agregar al menos 4 Overrides (Filtros) del "Global Volume" para tu juego. <10%>
+4) Utiliza la mayor cantidad de procesos de optimización (Luces bekeadas, Oclussion culling, LOD). <20%>
